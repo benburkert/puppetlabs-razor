@@ -75,12 +75,6 @@ class razor (
     content  => "${username} ALL=(root) NOPASSWD: /bin/mount, /bin/umount\n",
   }
 
-  if ! defined(Package['git']) {
-    package { 'git':
-      ensure => present,
-    }
-  }
-
   vcsrepo { $directory:
     ensure   => latest,
     provider => git,
